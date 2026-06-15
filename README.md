@@ -399,11 +399,11 @@ kafka-console-consumer.sh \
 Grafana Dashboard
 -------
 
-The [Kafka Exporter Overview](kafka_exporter_overview.json) dashboard covers all metrics exposed by this exporter, including the [`kafka_topic_partition_consumer`](#topics) metric: active consumer assignment per topic/partition and partitions without an active consumer.
+The [Kafka Exporter Overview](https://grafana.com/grafana/dashboards/25462-kafka-exporter-overview/) dashboard covers all metrics exposed by this exporter, including the [`kafka_topic_partition_consumer`](#topics) metric: active consumer assignment per topic/partition and partitions without an active consumer.
 
-Import it manually: Grafana → Dashboards → New → Import → upload [`kafka_exporter_overview.json`](kafka_exporter_overview.json) and select your Prometheus datasource.
+Import from Grafana.com: Dashboards → New → Import → enter ID `25462` and select your Prometheus datasource.
 
-A community listing on [grafana.com](https://grafana.com/grafana/dashboards/) will be added once the portal accepts uploads again.
+Or import manually: upload [`kafka_exporter_overview.json`](kafka_exporter_overview.json) from this repository.
 
 Panels:
 
