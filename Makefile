@@ -21,6 +21,11 @@ DOCKER_BUILDER          ?= kafka-exporter
 DOCKER_CACHE_FROM       ?=
 DOCKER_CACHE_TO         ?=
 
+comma := ,
+empty :=
+space := $(empty) $(empty)
+DOCKER_CROSSBUILD_FLAGS := $(foreach p,$(subst $(comma),$(space),$(DOCKER_PLATFORMS)),-p $(p))
+
 all: format build test
 
 style:
@@ -84,6 +89,10 @@ crossbuild: promu
 	@echo ">> crossbuilding binaries"
 	@$(PROMU) crossbuild --go=1.26
 
+crossbuild-docker: promu
+	@echo ">> crossbuilding binaries for docker ($(DOCKER_PLATFORMS))"
+	@$(PROMU) crossbuild --go=1.26 $(DOCKER_CROSSBUILD_FLAGS)
+
 tarball: promu
 	@echo ">> building release tarball"
 	@$(PROMU) tarball --prefix $(PREFIX) $(BIN_DIR)
@@ -92,7 +101,7 @@ docker: build
 	@echo ">> building docker image"
 	@docker build -t "$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAG)" --build-arg BIN_DIR=. .
 
-push: crossbuild
+push: crossbuild-docker
 	@echo ">> building and pushing multi-arch docker images, $(DOCKER_USERNAME),$(DOCKER_IMAGE_NAME),$(GIT_TAG_NAME)"
 	@docker login -u $(DOCKER_USERNAME) -p $(DOCKER_PASSWORD)
 	@docker buildx create --name $(DOCKER_BUILDER) --driver docker-container --use 2>/dev/null || docker buildx use $(DOCKER_BUILDER)
@@ -104,9 +113,8 @@ push: crossbuild
 		--platform "$(DOCKER_PLATFORMS)" \
 		.
 
-release: promu github-release
+release: promu github-release crossbuild
 	@echo ">> pushing binary to github with ghr"
-	@test -d .build/linux-amd64 || $(PROMU) crossbuild --go=1.26
 	@$(PROMU) tarball --prefix $(PREFIX) $(BIN_DIR)
 	@$(PROMU) release .tarballs
 
@@ -191,4 +199,4 @@ STATICCHECK=$(shell which staticcheck)
 endif
 
 
-.PHONY: all style format build test test-integration test-all ensure-kafka vet tarball docker promu sec staticcheck
+.PHONY: all style format build test test-integration test-all ensure-kafka vet tarball docker promu sec staticcheck crossbuild crossbuild-docker
