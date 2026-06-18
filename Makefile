@@ -16,7 +16,10 @@ DOCKER_IMAGE_NAME       ?= kafka-exporter
 DOCKER_IMAGE_TAG        ?= $(subst /,-,$(shell git rev-parse --abbrev-ref HEAD))
 
 PUSHTAG                 ?= type=registry,push=true
-DOCKER_PLATFORMS        ?= linux/amd64,linux/s390x,linux/arm64,linux/ppc64le
+DOCKER_PLATFORMS        ?= linux/amd64,linux/arm64
+DOCKER_BUILDER          ?= kafka-exporter
+DOCKER_CACHE_FROM       ?=
+DOCKER_CACHE_TO         ?=
 
 all: format build test
 
@@ -92,8 +95,11 @@ docker: build
 push: crossbuild
 	@echo ">> building and pushing multi-arch docker images, $(DOCKER_USERNAME),$(DOCKER_IMAGE_NAME),$(GIT_TAG_NAME)"
 	@docker login -u $(DOCKER_USERNAME) -p $(DOCKER_PASSWORD)
-	@docker buildx create --use
+	@docker buildx create --name $(DOCKER_BUILDER) --driver docker-container --use 2>/dev/null || docker buildx use $(DOCKER_BUILDER)
+	@docker buildx inspect --bootstrap >/dev/null
 	@docker buildx build -t "$(DOCKER_USERNAME)/$(DOCKER_IMAGE_NAME):$(GIT_TAG_NAME)" \
+		$(if $(DOCKER_CACHE_FROM),--cache-from $(DOCKER_CACHE_FROM),) \
+		$(if $(DOCKER_CACHE_TO),--cache-to $(DOCKER_CACHE_TO),) \
 		--output "$(PUSHTAG)" \
 		--platform "$(DOCKER_PLATFORMS)" \
 		.
