@@ -106,7 +106,8 @@ push: crossbuild
 
 release: promu github-release
 	@echo ">> pushing binary to github with ghr"
-	@$(PROMU) crossbuild tarballs
+	@test -d .build/linux-amd64 || $(PROMU) crossbuild --go=1.26
+	@$(PROMU) tarball --prefix $(PREFIX) $(BIN_DIR)
 	@$(PROMU) release .tarballs
 
 promu:
