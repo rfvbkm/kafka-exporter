@@ -1,5 +1,5 @@
-github.com/IBM/sarama v1.60.0 h1:ID/bpW3NePqZaFmXvloQ5h/EFJ9qs2GwHkhS6IyAYHw=
-github.com/IBM/sarama v1.60.0/go.mod h1:zRuXO3TY28cqFymE7Ysko5BxWRo8/VRPzRNKL6Eo2/k=
+github.com/IBM/sarama v1.60.1 h1:2IjpLPCL16CvaJcpxUT5+zE6tpeY5HdhREZOES80kGE=
+github.com/IBM/sarama v1.60.1/go.mod h1:ugg061kdM8zE4mgCeCUwDMd9NRd7QIRMoiA4a/Z8VH8=
 github.com/alecthomas/kingpin/v2 v2.4.0 h1:f48lwail6p8zpO1bC4TxtqACaGqHYA22qkHjHpqDjYY=
 github.com/alecthomas/kingpin/v2 v2.4.0/go.mod h1:0gyi0zQnjuFk8xrkNKamJoyUo382HRL7ATRpFZCw6tE=
 github.com/alecthomas/units v0.0.0-20240626203959-61d1e3462e30 h1:t3eaIm0rUkzbrIewtiFmMK5RXHej2XnoXNhxVsAYUfg=
@@ -66,8 +66,8 @@ github.com/jcmturner/gokrb5/v8 v8.4.4 h1:x1Sv4HaTpepFkXbt2IkL29DXRf8sOfZXo8eRKh6
 github.com/jcmturner/gokrb5/v8 v8.4.4/go.mod h1:1btQEpgT6k+unzCwX1KdWMEwPPkkgBtP+F6aCACiMrs=
 github.com/jcmturner/rpc/v2 v2.0.3 h1:7FXXj8Ti1IaVFpSAziCZWNzbNuZmnvw/i6CqLNdWfZY=
 github.com/jcmturner/rpc/v2 v2.0.3/go.mod h1:VUJYCIDm3PVOEHw8sgt091/20OJjskO/YJki3ELg/Hc=
-github.com/klauspost/compress v1.19.0 h1:sXLILfc9jV2QYWkzFOPWStmcUVH2RHEB1JCdY2oVvCQ=
-github.com/klauspost/compress v1.19.0/go.mod h1:cwPg85FWrGar70rWktvGQj8/hthj3wpl0PGDogxkrSQ=
+github.com/klauspost/compress v1.19.1 h1:VsB4HPswih7mmZ8WleSFQ75c/Ui1M4trX5oAsJnhSlk=
+github.com/klauspost/compress v1.19.1/go.mod h1:cwPg85FWrGar70rWktvGQj8/hthj3wpl0PGDogxkrSQ=
 github.com/krallistic/kazoo-go v0.0.0-20170526135507-a15279744f4e h1:IWiVY66Xy9YrDZ28qJMt1UTlh6x9UGW0aDH/o58CSnA=
 github.com/krallistic/kazoo-go v0.0.0-20170526135507-a15279744f4e/go.mod h1:Rq6003vCNoJNrT6ol0hMebQ3GWLWXSHrD/QcMlXt0EE=
 github.com/kylelemons/godebug v1.1.0 h1:RPNrshWIDI6G2gRW9EHilWtl7Z6Sb1BR0xunSBf0SNc=
