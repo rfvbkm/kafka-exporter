@@ -12,7 +12,7 @@ require (
 	github.com/prometheus/client_model v0.6.3
 	github.com/prometheus/common v0.55.0
 	github.com/rcrowley/go-metrics v0.0.0-20250401214520-65e299d6c5c9
-	github.com/xdg-go/scram v1.2.0
+	github.com/xdg-go/scram v1.4.0
 	golang.org/x/oauth2 v0.37.0
 	k8s.io/klog/v2 v2.140.0
 )
@@ -50,7 +50,6 @@ require (
 	github.com/pierrec/lz4/v4 v4.1.29 // indirect
 	github.com/prometheus/procfs v0.15.1 // indirect
 	github.com/samuel/go-zookeeper v0.0.0-20201211165307-7117e9ea2414 // indirect
-	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
 	github.com/xdg-go/stringprep v1.0.4 // indirect
 	github.com/xhit/go-str2duration/v2 v2.1.0 // indirect
 	golang.org/x/crypto v0.55.0 // indirect
